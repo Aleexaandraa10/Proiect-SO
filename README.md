@@ -1,60 +1,60 @@
-# AAShell - Shell Personalizat în C
+# **AAShell - Custom Shell in C**  
 
-## 📖 Descriere
-AAShell este un mini-shell interactiv, dezvoltat în **C**, care oferă o experiență personalizată de gestionare a comenzilor Linux. Acest shell imită funcționalitățile unui shell standard, oferind suport pentru execuția comenzilor de sistem, gestionarea proceselor în fundal, utilizarea **pipe-urilor**, **operatorilor logici (`&&`, `||`)**, **redirecționarea intrării/ieșirii** și **un istoric al comenzilor**.
+## 📖 **Description**  
+AAShell is an **interactive mini-shell** developed in **C**, providing a customized Linux command execution experience. This shell mimics the functionalities of a standard shell, supporting **system command execution, background process management, pipes (`|`), logical operators (`&&`, `||`), input/output redirection (`<`, `>`), and a command history feature**.  
 
-### 🔹 **Principalele componente**
-#### Structuri și variabile globale
-- `BackgroundProcess`: Structură pentru a stoca procesele din fundal.
-- `background_processes` și `background_count`: Listează procesele din fundal și numărul acestora.
-- `history` și `history_count`: Istoricul comenzilor utilizatorului.
-- `current_pid` și `suspended_pid`: PID-ul procesului curent și al celui suspendat.
+### 🔹 **Main Components**  
+#### **Structures and Global Variables**  
+- `BackgroundProcess`: Structure for storing background processes.  
+- `background_processes` & `background_count`: Lists background processes and their count.  
+- `history` & `history_count`: Stores user command history.  
+- `current_pid` & `suspended_pid`: Tracks the current and suspended process IDs.  
 
-#### Interfață și mesaje interactive
-- `print_prompt`: Afișează prompt-ul shell-ului într-un format personalizat.
-- `welcome_message`: Mesaj de bun venit pentru utilizatori.
-
----
-
-### 🚀 **Funcționalități principale**
-#### 📌 Istoricul comenzilor
-- `add_to_history`: Adaugă comenzi în istoric pentru referințe viitoare.
-- `print_history`: Afișează istoricul comenzilor utilizatorului.
-
-#### 📌 Execuția comenzilor
-- `execute_command`: Rulează comenzi simple introduse de utilizator.
-- `execute_pipe`: Permite execuția a două comenzi folosind **pipe-uri** (`|`).
-- `execute_redirection`: Gestionează **redirecționarea intrării/ieșirii** (`<`, `>`).
-- `execute_with_status`: Rulează comenzi și interpretează **codul de execuție**.
-- `execute_logical_commands`: Permite execuția comenzilor cu **operatori logici (`&&`, `||`)**.
-
-#### 📌 Gestionarea proceselor în fundal
-- `print_jobs`: Listează procesele care rulează în fundal.
-- `bring_to_foreground`: Aduce un proces din fundal în prim-plan.
-- `kill_background_process`: Omoară un proces care rulează în fundal.
-
-#### 📌 Suspendare și reluare procese
-- `signal_handler`: Gestionează semnalul `SIGTSTP` (`Ctrl+Z`) pentru a suspenda un proces activ.
-- `handle_fg_command`: Reia procesele suspendate și le aduce în prim-plan.
+#### **Interactive Interface and Messages**  
+- `print_prompt`: Displays a custom shell prompt.  
+- `welcome_message`: Prints a welcome message for users.  
 
 ---
 
-### ⚙️ **Gestionarea semnalelor și controlul execuției**
-- **Suspendarea proceselor (`SIGTSTP`)**: Când utilizatorul apasă `Ctrl+Z`, procesul curent este suspendat și poate fi reluat ulterior.
-- **Reluarea proceselor (`SIGCONT`)**: Procesul suspendat poate fi readus în execuție folosind `fg`.
+### 🚀 **Key Features**  
+#### 📌 **Command History**  
+- `add_to_history`: Adds commands to history for future reference.  
+- `print_history`: Displays the user’s command history.  
+
+#### 📌 **Command Execution**  
+- `execute_command`: Executes simple user commands.  
+- `execute_pipe`: Enables execution of **two commands using pipes** (`|`).  
+- `execute_redirection`: Handles **input/output redirection** (`<`, `>`).  
+- `execute_with_status`: Runs commands and interprets **execution status codes**.  
+- `execute_logical_commands`: Executes commands with **logical operators (`&&`, `||`)**.  
+
+#### 📌 **Background Process Management**  
+- `print_jobs`: Lists running background processes.  
+- `bring_to_foreground`: Brings a background process to the foreground.  
+- `kill_background_process`: Terminates a background process.  
+
+#### 📌 **Process Suspension & Resumption**  
+- `signal_handler`: Handles `SIGTSTP` (`Ctrl+Z`) to suspend an active process.  
+- `handle_fg_command`: Resumes suspended processes and brings them to the foreground.  
 
 ---
 
-## 🔧 Cum se compilează și rulează
-1. **Compilează proiectul:**
+### ⚙️ **Signal Handling & Execution Control**  
+- **Process Suspension (`SIGTSTP`)**: When the user presses `Ctrl+Z`, the current process is suspended and can be resumed later.  
+- **Process Resumption (`SIGCONT`)**: The suspended process can be resumed using `fg`.  
+
+---
+
+## 🔧 **Compilation & Execution**  
+1. **Compile the project:**  
    ```sh
    gcc shell_so.c -o aashell
-   ```
-2. **Rulează shell-ul personalizat:**
+   ```  
+2. **Run the custom shell:**  
    ```sh
    ./aashell
-   ```
-3. **Pentru a ieși:**
+   ```  
+3. **To exit:**  
    ```sh
    exit
    ```
